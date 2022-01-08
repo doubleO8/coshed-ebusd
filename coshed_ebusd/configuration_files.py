@@ -17,7 +17,7 @@ import requests
 from coshed_ebusd.defaults import USER_AGENT
 from coshed_ebusd.defaults import CONFIGURATION_SOURCE_URL
 from coshed_ebusd.defaults import CONFIGURATION_SOURCE_LOCAL
-from coshed_ebusd.defaults import CFG_LOCAL_EXTESIONS
+from coshed_ebusd.defaults import CFG_LOCAL_EXTENSIONS
 from coshed_ebusd.defaults import CFG_LOCAL_ENABLED
 
 APP_NAME = "ebusd_updates"
@@ -56,7 +56,7 @@ def _local_dispatch(folder=None):
         if existing and not existing_folder:
             _, ext = os.path.splitext(local_path)
 
-            if not ext.lower() in CFG_LOCAL_EXTESIONS:
+            if not ext.lower() in CFG_LOCAL_EXTENSIONS:
                 abort(404)
 
             app.logger.info(f"SERVE LOCAL {local_path}")
