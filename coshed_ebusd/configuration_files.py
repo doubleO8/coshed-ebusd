@@ -23,10 +23,7 @@ from coshed_ebusd.defaults import CFG_LOCAL_ENABLED
 APP_NAME = "ebusd_updates"
 
 #: flask application instance
-app = wolfication(
-    Flask(__name__),
-    app_name=APP_NAME,
-)
+app = wolfication(Flask(__name__), app_name=APP_NAME)
 
 
 PATTERN_LIST_FILES = r"^(broadcast|memory|_templates|scan|general)\.csv$"
@@ -191,18 +188,19 @@ def root_handler_proxy(folder=None):
 
 
 def get_file_list(path, regex=None):
-    for item in os.listdir(path):
-        abs_path = os.path.join(path, item)
+    if os.path.isdir(path):
+        for item in os.listdir(path):
+            abs_path = os.path.join(path, item)
 
-        if os.path.isdir(abs_path):
-            continue
-
-        if not item.startswith("_") and regex:
-            matcher = regex.match(item)
-            if not matcher:
+            if os.path.isdir(abs_path):
                 continue
 
-        yield item.encode("utf-8")
+            if not item.startswith("_") and regex:
+                matcher = regex.match(item)
+                if not matcher:
+                    continue
+
+            yield item.encode("utf-8")
 
 
 if __name__ == "__main__":

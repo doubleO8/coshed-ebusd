@@ -2,12 +2,25 @@
 # -*- coding: utf-8 -*-
 import os
 
+EK = {
+    "CONFIGURATION_SOURCE_URL": dict(
+        key="EBUSD_CONFIGURATION_URL",
+        description="Upstream configuration files source URL",
+        default="https://cfg.ebusd.eu:443",
+    ),
+    "CONFIGURATION_SOURCE_LOCAL_ROOT": dict(
+        key="EBUSD_CONFIGURATION_ROOT",
+        description="Local configuration files repository root path",
+        default="/var/ebusd-configuration",
+    ),
+}
+
 USER_AGENT = "ebusd/21.3"
 
-CONFIGURATION_SOURCE_URL_DEFAULT = "https://cfg.ebusd.eu:443"
 
 CONFIGURATION_SOURCE_URL = os.environ.get(
-    "EBUSD_CONFIGURATION_URL", CONFIGURATION_SOURCE_URL_DEFAULT
+    EK["CONFIGURATION_SOURCE_URL"]["key"],
+    EK["CONFIGURATION_SOURCE_URL"]["default"],
 )
 
 DELIMITER = ","
@@ -24,10 +37,10 @@ CFG_LOCAL_LANGUAGES = {"de", "en"}
 
 CFG_LOCAL_EXTENSIONS = (".csv", ".inc")
 
-CONFIGURATION_SOURCE_LOCAL_ROOT_DEFAULT = "/var/ebusd-configuration"
 
 CONFIGURATION_SOURCE_LOCAL_ROOT = os.environ.get(
-    "EBUSD_CONFIGURATION_ROOT", CONFIGURATION_SOURCE_LOCAL_ROOT_DEFAULT
+    EK["CONFIGURATION_SOURCE_LOCAL_ROOT"]["key"],
+    EK["CONFIGURATION_SOURCE_LOCAL_ROOT"]["default"],
 )
 
 CONFIGURATION_SOURCE_LOCAL = os.path.join(

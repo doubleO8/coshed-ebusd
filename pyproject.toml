@@ -17,7 +17,7 @@ exclude = '''
 
 [tool.poetry]
 name = "coshed-ebusd"
-version = "0.1.0"
+version = "0.2.0"
 description = "ebusd helper for lazy developer(s)"
 authors = ["doubleO8 <wb008@hdm-stuttgart.de>"]
 
@@ -36,3 +36,4 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.poetry.scripts]
 cebusd-analysis = 'coshed_ebusd.cli:analysis_cli'
+cebusd-configuration-server = 'coshed_ebusd.cli:configuration_server_cli'
