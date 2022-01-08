@@ -198,7 +198,9 @@ def perform_analysis(top_path, extensions=None, func=None, **kwargs):
     return stats
 
 
-def perform_i18n_analysis(top_path, extensions=None, func=None):
+def perform_i18n_analysis(top_path, extensions=None, func=None, **kwargs):
+    log = kwargs.get("use_log", logging.getLogger(__name__))
+
     if extensions is None:
         extensions = EXTENSIONS
 
