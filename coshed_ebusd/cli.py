@@ -44,7 +44,7 @@ def csv(**kwargs):
     )
 
 
-@click.command()
+@click.command(help="Configuration files server for testing")
 @simple_verbosity_option(log)
 @click.option("-p", "port", default=31329, type=int, show_default=True)
 @click.option("-a", "bind_address", default="0.0.0.0", show_default=True)
